@@ -19,7 +19,7 @@ while opcion != 5:
     print("\n=== GESTION DE PRODUCTOS ===\n1. Agregar producto\n2. Mostrar productos" \
     "\n3. Buscar producto\n4. Eliminar producto\n5. Salir del programa")
 
-    opcion = int(input("\nSeleccione una opción: "))
+    opcion = int(input("\nSeleccione una opción: ").strip())
 
     if opcion == 5:
         print("saliendo del programa")
@@ -34,9 +34,9 @@ while opcion != 5:
      # --- OPCIÓN 1: agregar PRODUCTOS ---
     if opcion == 1:
         print("▬▬▬ Agregar producto ▬▬▬")
-        nombre = input("Ingrese nombre del producto: ")
-        categoria = input("Ingrese la categoría del producto: ")
-        precio = int(input("Ingrese el precio del producto (sin centavos): "))
+        nombre = input("Ingrese nombre del producto: ").strip()
+        categoria = input("Ingrese la categoría del producto: ").strip()
+        precio = int(input("Ingrese el precio del producto (sin centavos): ").strip())
 
         producto_agregado = [nombre, categoria, precio]
         productos.append(producto_agregado)
@@ -67,7 +67,7 @@ while opcion != 5:
             print("⚠️ No hay productos registrados para buscar todavía.")
             continue
 
-        producto_buscado = input("Escriba el producto a buscar: ")
+        producto_buscado = input("Escriba el producto a buscar: ").strip()
         encontrado = False #indicador
 
         for i in range(len(productos)):
@@ -91,7 +91,7 @@ while opcion != 5:
             print("⚠️ No hay productos registrados!")
             continue
 
-        producto_p_eliminar = input("Escriba el producto para eliminarlo: ").lower()
+        producto_p_eliminar = input("Escriba el producto para eliminarlo: ").lower().strip()
         encontrado = False #indicador
 
         for item in productos:
@@ -106,3 +106,4 @@ while opcion != 5:
     if opcion == 5:
         print("Saliendo...")
         break
+
