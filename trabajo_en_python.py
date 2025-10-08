@@ -35,13 +35,25 @@ while opcion != 5:
     if opcion == 1:
         print("▬▬▬ Agregar producto ▬▬▬")
         nombre = input("Ingrese nombre del producto: ").strip()
-        categoria = input("Ingrese la categoría del producto: ").strip()
-        precio = int(input("Ingrese el precio del producto (sin centavos): ").strip())
+        while not nombre:
+            print("❌Esta información no puede quedar vacia!")
+            nombre = input("Ingrese nombre del producto: ").strip()
 
-        producto_agregado = [nombre, categoria, precio]
+        categoria = input("Ingrese la categoría del producto: ").strip()
+        while not categoria:
+            print("❌Esta información no puede quedar vacia!")
+            categoria = input("Ingrese la categoría del producto: ").strip()
+
+        precio = input("Ingrese el precio del producto (sin centavos): ").strip()
+        while not precio.isdigit():
+            print("❌Esta información no puede quedar vacia o ingresar otro valor que no sean números!")
+            precio = input("Ingrese el precio del producto (sin centavos): ").strip()
+        precio2 = int(precio)
+
+        producto_agregado = [nombre, categoria, precio2]
         productos.append(producto_agregado)
 
-        print("\n✅ Producto agregado con éxito!")      
+        print("\n✅ Producto agregado con éxito!")       
                         
     # --- OPCIÓN 2: MOSTRAR PRODUCTOS ---
     elif opcion == 2:
@@ -120,3 +132,4 @@ while opcion != 5:
         print(f"   {numero}. Nombre: {eliminado[0]} | Categoría: {eliminado[1]} | Precio: ${eliminado[2]}")
     
     
+
