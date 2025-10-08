@@ -84,26 +84,39 @@ while opcion != 5:
         if not encontrado:
             print("No existe ese producto.")    
                                         
-    if opcion == 4:
+    if opcion == 4:        
         print("Eliminar producto")
         # Verificamos si hay productos cargados antes de buscar
         if not productos:
             print("⚠️ No hay productos registrados!")
             continue
 
-        producto_p_eliminar = input("Escriba el producto para eliminarlo: ").lower().strip()
-        encontrado = False #indicador
+        # Mostramos la lista numerada
+        print("\nLista de productos:")
+        for i in range(len(productos)):
+            nombre = productos[i][0]
+            categoria = productos[i][1]
+            precio = productos[i][2]
+            print(f"{i + 1}. Nombre: {nombre} | Categoría: {categoria} | Precio: ${precio}")
 
-        for item in productos:
-            if producto_p_eliminar.lower() == item[0].lower():                     
-                productos.remove(item)
-                print(f"El producto {producto_p_eliminar} fue eliminado")
-                encontrado = True
-                break
-        if not encontrado:
-            print("No existe ese producto.") 
-        
-    if opcion == 5:
-        print("Saliendo...")
-        break
+        # Pedimos el número del producto a eliminar
+        numero = input("\nIngrese el número del producto que desea eliminar: ").strip()
 
+        # Verificamos que no esté vacío y sea numérico
+        while not numero.isdigit():
+            print("⚠️ Debe ingresar un número válido (solo dígitos).")
+            numero = input("Ingrese el número del producto que desea eliminar: ").strip()
+    
+        numero = int(numero)  # convertimos a entero ahora que sabemos que es válido
+    
+        # Validamos que el número esté dentro del rango
+        if numero < 1 or numero > len(productos):
+            print("❌ Número fuera de rango. Intente nuevamente.")
+            continue
+    
+        # Eliminamos el producto seleccionado
+        eliminado = productos.pop(numero - 1)
+        print(f"\n ❗​❗Producto eliminado correctamente:")
+        print(f"   {numero}. Nombre: {eliminado[0]} | Categoría: {eliminado[1]} | Precio: ${eliminado[2]}")
+    
+    
